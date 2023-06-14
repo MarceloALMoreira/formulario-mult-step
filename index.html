@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&
+        family=Titillium+Web:wght@700&display=swap" rel="stylesheet">
+    <title>Multi step</title>
+</head>
+
+<body>
+    <main id="app">
+
+        <form>
+            <div class="step-progress">
+                <strong class="active done">Contato</strong>
+
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.41663 2L6.41663 7L1.41663 12" stroke="#323238" stroke-width="2"
+                        stroke-linecap="square" />
+                </svg>
+
+                <strong class="active">Empresa</strong>
+
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.41663 2L6.41663 7L1.41663 12" stroke="#323238" stroke-width="2"
+                        stroke-linecap="square" />
+                </svg>
+
+                <strong>Projeto</strong>
+            </div>
+
+
+
+            <!-- step 1 -->
+            <div class="form-step" active>
+                <div class="content">
+                    <div class="input-wrapper">
+                        <label for="name">Nome</label>
+                        <input id="name" name="name" type="text" placeholder="Como prefe ser chamado" required />
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="phone">Telefone</label>
+                        <input id="phone" type="text" placeholder=" +55 9999-9999" pattern="\+55 \d{4}-\d{4}"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            onkeypress="return validatePhoneNumber(event)" />
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="email">E-mail</label>
+                        <input id="email" email="email" type="text" placeholder="Digite seu email" required />
+                    </div>
+                </div>
+
+                <div class="button-wrapper justify-end">
+                    <!-- <button class="btn secondary">VOLTAR</button> -->
+                    <button type="button" class="btn primary">CONTINUAR</button>
+                </div>
+            </div>
+
+
+            <!-- Step 2 -->
+            <div class="form-step">
+                <div class="content">
+                    <div class="input-wrapper">
+                        <label for="empresa">Nome da empresa</label>
+                        <input id="empresa" name="empresa" type="text" placeholder="Qual é o nome da empresa"
+                            required />
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="colabodores">Números de funcionários</label>
+                        <input id="colabodores" type="text" placeholder="Digite o números de colabodores"
+                            pattern="\+55 \d{4}-\d{4}" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            onkeypress="return validateFuncionarioNumber(event)" />
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="about">Sobre seu negócio</label>
+                        <textarea id="about" name="about"
+                            placeholder="Fale um pouco sobre seus produtos e serviços"></textarea>
+                    </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <button type="button" class="btn secondary">VOLTAR</button>
+                    <button type="button" class="btn primary">CONTINUAR</button>
+
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="form-step">
+                <div class="input-wrapper">
+                    <label for="about">Objetivos do projeto</label>
+                    <textarea id="objetivos" name="objetivos"
+                        placeholder="Descreva quais os objetivos desse projeto"></textarea>
+                </div>
+                <div class="button-wrapper">
+                    <button class="btn secondary">VOLTAR</button>
+                    <button class="btn primary" type="submit">ENVIAR RESPOSTA</button>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+<script>
+    function formatPhoneNumber(input) {
+        input.value = input.value.replace(/[^0-9-]/g, '');
+    }
+
+    function validatePhoneNumber(event) {
+        const input = event.target;
+        const value = input.value.replace(/[^0-9-]/g, '');
+
+        if (value.length >= 11) {
+            event.preventDefault();
+        }
+    }
+</script>
+
+</html>
