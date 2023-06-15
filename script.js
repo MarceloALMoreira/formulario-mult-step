@@ -17,7 +17,7 @@ form.addEventListener('click', (e) => {
     const actions = {
         next() {
             if (!isValidInput()) {
-                // return
+                return
             }
             currentStep++
         },
