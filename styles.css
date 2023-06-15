@@ -27,19 +27,24 @@ button {
     font-size: 1.6rem;
     font-family: 'IBM Plex Sans', sans-serif;
 }
-body{
+
+body {
     height: 100vh;
     display: grid;
     place-content: center;
 
 }
-form{
+
+form {
     padding: 3.2rem;
     border: 1px solid var(--color-base-gray-100);
     border-radius: .6rem;
+
+
+    overflow: hidden;
 }
 
-.step-progress{
+.step-progress {
     display: flex;
     align-items: cemter;
     gap: 4rem;
@@ -49,17 +54,19 @@ form{
 
     counter-reset: step;
 }
-.step-progress strong{ 
+
+.step-progress strong {
     display: flex;
     align-items: center;
     gap: .8rem;
     color: var(--color-base-gray-200);
 }
-.step-progress strong.active{
+
+.step-progress strong.active {
     color: var(--color-base-gray-400);
 }
 
-.step-progress strong::before{
+.step-progress strong::before {
     counter-increment: step;
     content: counter(step);
     font-family: 'Titillium Web';
@@ -75,19 +82,20 @@ form{
 
     color: var(--color-base-gray-200);
 }
-.step-progress .active::before{
+
+.step-progress .active::before {
     background-color: var(--color-produto-purple-mid);
     color: var(--color-base-white);
 }
 
-.step-progress .done::before{
+.step-progress .done::before {
     content: '✓';
     background-color: var(--color-feedback-sucess-color);
 }
 
 
 
-.content{
+.content {
     margin-top: 3.2rem;
 
     display: grid;
@@ -98,12 +106,13 @@ form{
     gap: 16px; */
 }
 
-.button-wrapper{
+.button-wrapper {
     margin-top: 3.2rem;
     display: flex;
     justify-content: space-between;
 }
-.btn{
+
+.btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,27 +127,30 @@ form{
 
     min-width: 15.8rem;
 }
-.primary{
+
+.primary {
     background-color: var(--color-produto-purple-mid);
     color: var(--color-base-white);
 }
-.secondary{
+
+.secondary {
     background-color: var(--color-base-white);
     color: var(--color-produto-purple-mid);
     border: 1px solid var(--color-produto-purple-light);
 }
 
-.justify-end{
+.justify-end {
     justify-content: flex-end;
 }
 
 
-label{
+label {
     font-weight: 700;
     color: var(--color-base-gray-400);
 }
 
-input, textarea{
+input,
+textarea {
     width: 100%;
     margin-top: 4px;
     border: 1px solid var(--color-base-gray-100);
@@ -147,7 +159,45 @@ input, textarea{
     padding: 1.6rem;
     background-color: var(--color-base-white);
 }
+
 input::placeholder,
-textarea::placeholder{
+textarea::placeholder {
     color: var(--color-base-gray-200);
+}
+
+/* .form-step{
+    display: none;
+}
+
+*/
+.form-step.active {
+    display: block;
+}
+
+
+/* Animations */
+@keyframes appear {
+    0% {
+        scale: .7;
+        opacity: 0;
+    }
+}
+
+.form-step.active {
+    animation: appear 200ms 100ms ease-in-out backwards;
+}
+
+@keyframes slideout {
+    100% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+}
+
+.form-step {
+    animation: slideout 200ms ease-in-out forwards;
+}
+
+.hide {
+    display: none;
 }
